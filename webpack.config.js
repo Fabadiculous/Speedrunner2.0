@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -16,10 +17,18 @@ module.exports = {
                         options: { minimize: true }
                     }
                 ]
+            },
+            {
+                test: [ /\.vert$/, /\.frag$/ ],
+                loader: 'raw-loader'
             }
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            CANVAS_RENDERER: JSON.stringify(true),
+            WEBGL_RENDERER: JSON.stringify(true)
+        }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: './index.html'
