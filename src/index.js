@@ -24,3 +24,7 @@ const config = {
 
 /* eslint-disable no-unused-vars */
 const game = new Phaser.Game(config);
+
+let test = 'Dev branch';
+
+console.log(test);
