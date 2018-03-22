@@ -1,5 +1,7 @@
 import 'phaser';
 
+import Preload from './preload';
+
 const config = {
     type: Phaser.AUTO,
     width: 800,
@@ -7,7 +9,7 @@ const config = {
     backgroundColor: '#55CC55',
     pixelArt: true,
     parent: 'gameDiv',
-    scene: [ ],
+    scene: [ Preload ],
     title: 'Speedrunner 2.0',
     banner: {
         text: '#191970',
@@ -24,7 +26,3 @@ const config = {
 
 /* eslint-disable no-unused-vars */
 const game = new Phaser.Game(config);
-
-let test = 'Dev branch';
-
-console.log(test);
