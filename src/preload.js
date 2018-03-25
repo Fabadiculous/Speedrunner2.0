@@ -9,6 +9,17 @@ class Preload extends Phaser.Scene {
     }
 
     preload () {
+
+        let progress = this.add.graphics();
+
+        this.load.on('progress', (value) => {
+            progress.clear();
+            progress.fillStyle(0xff0000, 1);
+            progress.fillRect(0, 270, 800 * value, 60);
+        });
+
+        this.load.on('complete', () => progress.destroy());
+
         // Path for images and sprite sheets
         this.load.setPath('../assets/images/');
 
@@ -45,7 +56,7 @@ class Preload extends Phaser.Scene {
     }
 
     create () {
-        this.add.image(400, 300, 'preloadBar');
+        // this.add.image(400, 300, 'preloadBar');
 
         this.map = this.make.tilemap({ key: 'level1' });
 
