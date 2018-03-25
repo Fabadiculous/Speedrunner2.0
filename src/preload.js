@@ -51,14 +51,18 @@ class Preload extends Phaser.Scene {
 
         // Path for levels
         this.load.setPath('../assets/levels');
-        this.load.tilemapTiledJSON('level1', 'Level1.json');
+        this.load.tilemapTiledJSON('tutorial', 'Tutorial.json');
+        for (let i = 1; i < 10; i++) {
+            this.load.tilemapTiledJSON(`level${i}`, `Level${i}.json`);
+        }
+
 
     }
 
     create () {
         // this.add.image(400, 300, 'preloadBar');
 
-        this.map = this.make.tilemap({ key: 'level1' });
+        this.map = this.make.tilemap({ key: 'tutorial' });
 
         let tiles = this.map.addTilesetImage('groundTiles');
 
