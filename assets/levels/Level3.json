@@ -595,7 +595,7 @@
          "imageheight":32,
          "imagewidth":576,
          "margin":0,
-         "name":"GroundTiles",
+         "name":"groundTiles",
          "spacing":0,
          "tilecount":18,
          "tileheight":32,
