@@ -60,14 +60,7 @@ class Preload extends Phaser.Scene {
     }
 
     create () {
-        // this.add.image(400, 300, 'preloadBar');
-
-        this.map = this.make.tilemap({ key: 'tutorial' });
-
-        let tiles = this.map.addTilesetImage('groundTiles');
-
-        let layer = this.map.createStaticLayer('GroundLayer', tiles);
-        console.log(layer);
+        this.state.start('Menu');
     }
 
 

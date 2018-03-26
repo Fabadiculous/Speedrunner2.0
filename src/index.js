@@ -1,6 +1,7 @@
 import 'phaser';
 
 import Preload from './preload';
+import Menu from './menu';
 
 const config = {
     type: Phaser.AUTO,
@@ -9,7 +10,7 @@ const config = {
     backgroundColor: '#87CEEB',
     pixelArt: true,
     parent: 'gameDiv',
-    scene: [ Preload ],
+    scene: [ Preload, Menu ],
     title: 'Speedrunner 2.0',
     banner: {
         text: '#191970',
