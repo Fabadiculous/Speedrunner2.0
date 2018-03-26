@@ -60,7 +60,7 @@ class Preload extends Phaser.Scene {
     }
 
     create () {
-        this.state.start('Menu');
+        this.scene.start('Menu');
     }
 
 
