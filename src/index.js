@@ -6,7 +6,7 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    backgroundColor: '#55CC55',
+    backgroundColor: '#87CEEB',
     pixelArt: true,
     parent: 'gameDiv',
     scene: [ Preload ],
