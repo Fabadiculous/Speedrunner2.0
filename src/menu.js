@@ -21,28 +21,28 @@ class Menu extends Phaser.Scene {
                 align: 'center'
             }
         };
-
         this.make.text(menuText).setOrigin(0.5, 0);
 
-        this.createButton(100, 100, function () { console.log('Test'); }, this);
+        let btnTextStyle = {
+            fontSize: '18px',
+            fontFamily: 'Arial',
+            color: '#FFD700',
+            align: 'center'
+        };
+        let button = new Button(
+            this.sys.game.config.width / 2,
+            this.sys.game.config.height / 2,
+            this.playGame,
+            this
+        ).addText('Play', btnTextStyle);
+    }
 
-        let button = new Button(200, 100, function () { console.log('Test2'); }, this);
+    playGame () {
+        this.scene.start('playGame');
     }
 
     update () {
 
-    }
-
-    createButton (x, y, callback, context, hover = 1, onDown = 2) {
-        let button = context.add.image(x, y, 'button').setInteractive();
-        button.on('pointerover', () => button.setFrame(hover));
-        button.on('pointerout', () => button.setFrame(0));
-        button.on('pointerdown', () => {
-            button.setFrame(onDown);
-            callback();
-        });
-
-        return button;
     }
 }
 
