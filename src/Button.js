@@ -1,4 +1,4 @@
-class Button extends Phaser.GameObjects.Image {
+class Button extends Phaser.GameObjects.Sprite {
     constructor (x, y, callback, scene, hover = 1, onDown = 2) {
         super(scene, x, y, 'button', 0);
         this.scene = scene;
@@ -18,8 +18,9 @@ class Button extends Phaser.GameObjects.Image {
             this.callback(this.scene);
         }, this);
     }
+
     addText (text, style) {
-        style.fontSize = 0.1 * this.y;
+        style.fontSize = 0.6 * this.displayHeight;
         this.scene.add.text(this.x, this.y, text, style).setOrigin(0.5);
     }
 }

@@ -10,6 +10,8 @@ class Menu extends Phaser.Scene {
     }
 
     create () {
+        const width = this.sys.game.config.width / 2;
+        const height = this.sys.game.config.height / 2;
         let menuText = {
             x: this.sys.game.config.width / 2,
             y: 0,
@@ -29,12 +31,31 @@ class Menu extends Phaser.Scene {
             color: '#FFD700',
             align: 'center'
         };
-        let button = new Button(
-            this.sys.game.config.width / 2,
-            this.sys.game.config.height / 2,
+        let play = new Button(
+            width,
+            height - 100,
             this.playGame,
             this
-        ).addText('Play', btnTextStyle);
+        );
+        play.addText('Play', btnTextStyle);
+
+        let options = new Button(
+            width,
+            height,
+            this.playGame,
+            this
+        );
+        options.addText('Play', btnTextStyle);
+
+        let help = new Button(
+            width,
+            height + 100,
+            this.playGame,
+            this
+        );
+        help.addText('Play', btnTextStyle);
+        console.log(help);
+        // help.setDisplaySize(200, 100);
     }
 
     playGame (context) {
