@@ -37,8 +37,8 @@ class Menu extends Phaser.Scene {
         ).addText('Play', btnTextStyle);
     }
 
-    playGame () {
-        this.scene.start('playGame');
+    playGame (context) {
+        context.scene.start('playGame');
     }
 
     update () {
