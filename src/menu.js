@@ -34,7 +34,8 @@ class Menu extends Phaser.Scene {
         let play = new Button(
             width,
             height - 100,
-            this.playGame,
+            this.nextScene,
+            [ 'playGame' ],
             this
         );
         play.addText('Play', btnTextStyle);
@@ -42,7 +43,8 @@ class Menu extends Phaser.Scene {
         let options = new Button(
             width,
             height,
-            this.playGame,
+            this.nextScene,
+            [ 'playGame' ],
             this
         );
         options.addText('Play', btnTextStyle);
@@ -50,16 +52,15 @@ class Menu extends Phaser.Scene {
         let help = new Button(
             width,
             height + 100,
-            this.playGame,
+            this.nextScene,
+            [ 'playGame' ],
             this
         );
-        help.addText('Play', btnTextStyle);
-        console.log(help);
-        // help.setDisplaySize(200, 100);
+        help.addText('Help', btnTextStyle);
     }
 
-    playGame (context) {
-        context.scene.start('playGame');
+    nextScene (key) {
+        this.scene.start(key);
     }
 
     update () {
