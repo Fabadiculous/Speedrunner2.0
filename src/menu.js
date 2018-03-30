@@ -31,6 +31,8 @@ class Menu extends Phaser.Scene {
             color: '#FFD700',
             align: 'center'
         };
+
+        // Menu Buttons
         let play = new Button(
             width,
             height - 100,
