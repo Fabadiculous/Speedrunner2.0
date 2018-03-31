@@ -9,14 +9,15 @@ class Menu extends Phaser.Scene {
     }
 
     init () {
-        this.scene.bringToTop();
+        // this.scene.bringToTop();
     }
 
     create () {
-        const width = this.sys.game.config.width / 2;
-        const height = this.sys.game.config.height / 2;
+        this.registry.set('width', this.sys.game.config.width);
+        this.registry.set('height', this.sys.game.config.height);
+
         let menuText = {
-            x: this.sys.game.config.width / 2,
+            x: this.registry.get('width') / 2,
             y: 0,
             text: 'SPEEDRUNNER',
             style: {
@@ -37,8 +38,8 @@ class Menu extends Phaser.Scene {
 
         // Menu Buttons
         let play = new Button(
-            width,
-            height - 100,
+            this.registry.get('width') / 2,
+            this.registry.get('height') / 2 - 100,
             this.nextScene,
             [ 'playGame' ],
             this
@@ -46,8 +47,8 @@ class Menu extends Phaser.Scene {
         play.addText('Play', btnTextStyle);
 
         let options = new Button(
-            width,
-            height,
+            this.registry.get('width') / 2,
+            this.registry.get('height') / 2,
             this.nextScene,
             [ 'options' ],
             this
@@ -55,8 +56,8 @@ class Menu extends Phaser.Scene {
         options.addText('Play', btnTextStyle);
 
         let help = new Button(
-            width,
-            height + 100,
+            this.registry.get('width') / 2,
+            this.registry.get('height') / 2 + 100,
             this.nextScene,
             [ 'help' ],
             this
