@@ -2,7 +2,10 @@ import Button from './Button';
 
 class Menu extends Phaser.Scene {
     constructor () {
-        super({ key: 'menu' });
+        super({
+            key: 'menu',
+            plugins: [ 'InputPlugin' ]
+        });
     }
 
     init () {

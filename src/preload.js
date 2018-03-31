@@ -2,9 +2,7 @@ class Preload extends Phaser.Scene {
     constructor () {
         super({
             key: 'Prelaod',
-            files: [
-                {type: 'image', key: 'preloadBar', url: '../assets/images/PreloadBar.png'}
-            ]
+            plugins: [ 'Loader' ]
         });
     }
 

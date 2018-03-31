@@ -1,6 +1,9 @@
 class Background extends Phaser.Scene {
     constructor () {
-        super({ key: 'background'});
+        super({
+            key: 'background',
+            plugins: []
+        });
     }
 
     init () {
