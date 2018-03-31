@@ -49,7 +49,7 @@ class Menu extends Phaser.Scene {
             width,
             height,
             this.nextScene,
-            [ 'playGame' ],
+            [ 'options' ],
             this
         );
         options.addText('Play', btnTextStyle);
@@ -58,7 +58,7 @@ class Menu extends Phaser.Scene {
             width,
             height + 100,
             this.nextScene,
-            [ 'playGame' ],
+            [ 'help' ],
             this
         );
         help.addText('Help', btnTextStyle);

@@ -4,6 +4,7 @@ import Preload from './preload';
 import Menu from './menu';
 import PlayGame from './play';
 import Background from './background';
+import Help from './help'
 
 const config = {
     type: Phaser.AUTO,
