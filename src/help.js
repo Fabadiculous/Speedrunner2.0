@@ -11,7 +11,7 @@ class Help extends Phaser.Scene {
     }
 
     create () {
-        let helpText = {
+        let helpTitle = {
             x: this.registry.get('width') / 2,
             y: 0,
             text: 'HELP',
@@ -22,8 +22,26 @@ class Help extends Phaser.Scene {
                 align: 'center'
             }
         };
-        this.make.text(helpText).setOrigin(0.5, 0);
+        this.make.text(helpTitle).setOrigin(0.5, 0);
 
+        let helpText = {
+            x: this.registry.get('width') / 2,
+            y: this.registry.get('height') / 2 - 100,
+            text: 'Go Fast. Kill Enemies. Collect Coins. Earn 3 stars!',
+            style: {
+                fontSize: '20px',
+                fontFamily: 'Arial',
+                color: '#000000',
+                align: 'center'
+            }
+        };
+        this.make.text(helpText).setOrigin(0.5);
+
+        this.add.sprite(this.registry.get('width') / 2 + 150, this.registry.get('height') / 2 - 70, 'star');
+        this.add.sprite(this.registry.get('width') / 2 + 100, this.registry.get('height') / 2 - 70, 'coin');
+        this.add.sprite(this.registry.get('width') / 2 + 50, this.registry.get('height') / 2 - 70, 'flyEnemy');
+        this.add.sprite(this.registry.get('width') / 2, this.registry.get('height') / 2 - 70, 'snake');
+        this.add.sprite(this.registry.get('width') / 2 - 50, this.registry.get('height') / 2 - 70, 'player');
 
     }
 }
