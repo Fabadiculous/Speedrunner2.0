@@ -59,6 +59,7 @@ class Preload extends Phaser.Scene {
 
     create () {
         this.scene.launch('background');
+        this.scene.launch('createAnims');
         this.scene.start('menu');
     }
 
