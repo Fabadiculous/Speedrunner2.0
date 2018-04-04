@@ -31,8 +31,8 @@ class Preload extends Phaser.Scene {
 
         this.load.spritesheet([
             { key: 'button', file: 'Button.png', config: {frameWidth: 200, frameHeight: 50} },
-            { key: 'coin', file: 'Coin.png', config: {frameWidth: 22, frameHeight: 16} },
-            { key: 'snake', file: 'Enemy.png', config: {frameWidth: 64, frameHeight: 32} },
+            { key: 'coin', file: 'Coin.png', config: {frameWidth: 16, frameHeight: 16} },
+            { key: 'snake', file: 'Enemy.png', config: {frameWidth: 32, frameHeight: 32} },
             { key: 'flyEnemy', file: 'FlyingEnemy.png', config: {frameWidth: 25, frameHeight: 23} },
             { key: 'movingPlatform', file: 'MovingPlatform.png', config: {frameWidth: 64, frameHeight: 32} },
             { key: 'player', file: 'Player.png', config: {frameWidth: 16, frameHeight: 32} },
