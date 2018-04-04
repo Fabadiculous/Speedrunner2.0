@@ -5,6 +5,7 @@ import Menu from './menu';
 import PlayGame from './play';
 import Background from './background';
 import Help from './help';
+import CreateAnims from './animations';
 
 const config = {
     type: Phaser.AUTO,
@@ -13,7 +14,7 @@ const config = {
     backgroundColor: '#87CEEB',
     pixelArt: true,
     parent: 'gameDiv',
-    scene: [ Preload, Menu, PlayGame, Background, Help ],
+    scene: [ Preload, Menu, PlayGame, Background, Help, CreateAnims ],
     title: 'Speedrunner 2.0',
     banner: {
         text: '#191970',
