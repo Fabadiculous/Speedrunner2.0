@@ -38,9 +38,9 @@ class Help extends Phaser.Scene {
         this.make.text(helpText).setOrigin(0.5);
 
         this.add.sprite(this.registry.get('width') / 2 + 150, this.registry.get('height') / 2 - 70, 'star');
-        this.add.sprite(this.registry.get('width') / 2 + 100, this.registry.get('height') / 2 - 70, 'coin');
-        this.add.sprite(this.registry.get('width') / 2 + 50, this.registry.get('height') / 2 - 70, 'flyEnemy');
-        this.add.sprite(this.registry.get('width') / 2, this.registry.get('height') / 2 - 70, 'snake');
+        this.add.sprite(this.registry.get('width') / 2 + 100, this.registry.get('height') / 2 - 70, 'coin').play('spin');
+        this.add.sprite(this.registry.get('width') / 2 + 50, this.registry.get('height') / 2 - 70, 'flyEnemy').play('fly');
+        this.add.sprite(this.registry.get('width') / 2, this.registry.get('height') / 2 - 70, 'snake').play('move');
         this.add.sprite(this.registry.get('width') / 2 - 50, this.registry.get('height') / 2 - 70, 'player').play('run');
 
     }
