@@ -29,13 +29,6 @@ class Menu extends Phaser.Scene {
         };
         this.make.text(menuText).setOrigin(0.5, 0);
 
-        let btnTextStyle = {
-            fontSize: '18px',
-            fontFamily: 'Arial',
-            color: '#FFD700',
-            align: 'center'
-        };
-
         // Menu Buttons
         let play = new Button(
             this.registry.get('width') / 2,
@@ -44,7 +37,7 @@ class Menu extends Phaser.Scene {
             [ 'playGame' ],
             this
         );
-        play.addText('Play', btnTextStyle);
+        play.addText('Play');
 
         let options = new Button(
             this.registry.get('width') / 2,
@@ -53,7 +46,7 @@ class Menu extends Phaser.Scene {
             [ 'options' ],
             this
         );
-        options.addText('Play', btnTextStyle);
+        options.addText('Options');
 
         let help = new Button(
             this.registry.get('width') / 2,
@@ -62,7 +55,7 @@ class Menu extends Phaser.Scene {
             [ 'help' ],
             this
         );
-        help.addText('Help', btnTextStyle);
+        help.addText('Help');
     }
 
     nextScene (key) {
