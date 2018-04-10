@@ -53,13 +53,12 @@ class Preload extends Phaser.Scene {
         for (let i = 1; i < 10; i++) {
             this.load.tilemapTiledJSON(`level${i}`, `Level${i}.json`);
         }
-
-
     }
 
     create () {
         this.scene.launch('background');
         this.scene.launch('createAnims');
+        this.scene.launch('loadLevels');
         this.scene.start('menu');
     }
 
