@@ -16,6 +16,13 @@ class Level {
         this._complete = false;
     }
 
+    setStars (speed, enemies, coins) {
+        let stars = this._levelStars;
+        stars.speed = stars.speed || speed;
+        stars.enemies = stars.enemies || enemies;
+        stars.coins = stars.coins || coins;
+    }
+
     get key () {
         return this._key;
     }
