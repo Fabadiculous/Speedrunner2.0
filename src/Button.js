@@ -21,6 +21,14 @@ class Button extends Phaser.GameObjects.Sprite {
     }
 
     addText (text, style) {
+        if (style === undefined) {
+            style = {
+                fontSize: '18px',
+                fontFamily: 'Arial',
+                color: '#FFD700',
+                align: 'center'
+            };
+        }
         style.fontSize = 0.6 * this.displayHeight;
         this.scene.add.text(this.x, this.y, text, style).setOrigin(0.5);
     }
