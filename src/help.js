@@ -1,3 +1,5 @@
+import Button from './Button';
+
 class Help extends Phaser.Scene {
     constructor () {
         super({
@@ -11,6 +13,9 @@ class Help extends Phaser.Scene {
     }
 
     create () {
+        let backBtn = new Button(0, 0, this.nextScene, [ 'menu' ], this);
+        backBtn.addText('Back');
+
         let helpTitle = {
             x: this.registry.get('width') / 2,
             y: 0,
