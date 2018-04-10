@@ -23,7 +23,9 @@ class LoadLevels extends Phaser.Scene {
             let properties = data[keys[i]].data.properties || defaultProps;
             this.levels[i] = new Level(keys[i], properties.starTime, properties.devAllStar, properties.devAnyTime);
         }
-        console.log(this.levels);
+
+        this.registry.set('levels', this.levels);
+        this.scene.remove('loadLevels');
     }
 }
 
