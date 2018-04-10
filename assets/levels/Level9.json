@@ -1997,6 +1997,18 @@
         }],
  "nextobjectid":106,
  "orientation":"orthogonal",
+ "properties":
+    {
+     "devAllStar":23,
+     "devAnyTime":5,
+     "starTime":50
+    },
+ "propertytypes":
+    {
+     "devAllStar":"int",
+     "devAnyTime":"int",
+     "starTime":"int"
+    },
  "renderorder":"right-down",
  "tileheight":32,
  "tilesets":[

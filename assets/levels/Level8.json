@@ -1287,13 +1287,19 @@
     {
      "Direction":"",
      "Tile_dist":25,
-     "moveTime":0
+     "moveTime":0,
+     "devAllStar":16,
+     "devAnyTime":3,
+     "starTime":30
     },
  "propertytypes":
     {
      "Direction":"string",
      "Tile_dist":"int",
-     "moveTime":"int"
+     "moveTime":"int",
+     "devAllStar":"int",
+     "devAnyTime":"int",
+     "starTime":"int"
     },
  "renderorder":"right-down",
  "tileheight":32,
