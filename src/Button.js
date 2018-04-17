@@ -1,9 +1,10 @@
 class Button extends Phaser.GameObjects.Sprite {
-    constructor (x, y, callback, params, scene, hover = 1, onDown = 2) {
+    constructor (x, y, callback, params, scene, text, hover = 1, onDown = 2) {
         super(scene, x, y, 'button', 0);
         this.scene = scene;
         this.params = params;
         this.callback = callback;
+        this.text = this.addText(text);
         this.overFrame = hover;
         this.downFrame = onDown;
         this.scene.add.existing(this);
@@ -30,7 +31,10 @@ class Button extends Phaser.GameObjects.Sprite {
             };
         }
         style.fontSize = 0.6 * this.displayHeight;
-        this.scene.add.text(this.x, this.y, text, style).setOrigin(0.5);
+        if (text) {
+            this.scene.add.text(this.x, this.y, text, style).setOrigin(this.originX, this.originY);
+        }
+
     }
 }
 export default Button;
