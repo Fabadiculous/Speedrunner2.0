@@ -1,9 +1,15 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-// const path = require('path');
+/* eslint-disable no-undef */
 
 module.exports = {
+    entry: { main: './src/index.js' },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'main.js'
+    },
     module: {
         rules: [
             {
@@ -26,6 +32,7 @@ module.exports = {
             }
         ]
     },
+    devServer: { contentBase: path.resolve(__dirname, 'dist') },
     plugins: [
         new webpack.DefinePlugin({
             CANVAS_RENDERER: JSON.stringify(true),
