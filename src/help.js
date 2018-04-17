@@ -13,8 +13,11 @@ class Help extends Phaser.Scene {
     }
 
     create () {
-        let backBtn = new Button(0, 0, this.nextScene, [ 'menu' ], this);
+        let menu = this.scene.get('menu');
+        let backBtn = new Button(0, 0, menu.nextScene, [ 'menu' ], this);
+        backBtn.setOrigin(0);
         backBtn.addText('Back');
+
 
         let helpTitle = {
             x: this.registry.get('width') / 2,
