@@ -32,7 +32,10 @@ module.exports = {
             }
         ]
     },
-    devServer: { contentBase: path.resolve(__dirname, 'dist') },
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
+        watchContentBase: true
+    },
     plugins: [
         new webpack.DefinePlugin({
             CANVAS_RENDERER: JSON.stringify(true),
