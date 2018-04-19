@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 /* eslint-disable no-undef */
 
 module.exports = {
@@ -41,6 +41,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: './index.html'
-        })
+        }),
+        new CopyWebpackPlugin(
+            { from: 'src/assets', to: 'dist/assets' }
+        )
     ]
 };
