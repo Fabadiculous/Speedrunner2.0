@@ -19,7 +19,7 @@ class Preload extends Phaser.Scene {
         this.load.on('complete', () => progress.destroy());
 
         // Path for images and sprite sheets
-        this.load.setPath('../assets/images/');
+        this.load.setPath('assets/images/');
 
         this.load.image([
             { key: 'clouds', file: 'Clouds.png'},
@@ -43,12 +43,12 @@ class Preload extends Phaser.Scene {
         ]);
 
         // Path for audio
-        this.load.setPath('../assets/sounds');
+        this.load.setPath('assets/sounds');
 
         this.load.audio('getStar', [ 'getStar.mp3', 'getStar.ogg' ]);
 
         // Path for levels
-        this.load.setPath('../assets/levels');
+        this.load.setPath('assets/levels');
         this.load.tilemapTiledJSON('tutorial', 'Tutorial.json');
         for (let i = 1; i < 10; i++) {
             this.load.tilemapTiledJSON(`level${i}`, `Level${i}.json`);
