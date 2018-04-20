@@ -56,9 +56,12 @@ class Preload extends Phaser.Scene {
     }
 
     create () {
+        this.registry.set('width', this.sys.game.config.width);
+        this.registry.set('height', this.sys.game.config.height);
         this.scene.launch('background');
         this.scene.launch('createAnims');
         this.scene.launch('loadLevels');
+        this.scene.launch('menuUI', { title: 'SPEEDRUNNER', backBtn: false });
         this.scene.start('menu');
     }
 
