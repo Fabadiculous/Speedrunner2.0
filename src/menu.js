@@ -34,7 +34,7 @@ class Menu extends Phaser.Scene {
             this.registry.get('width') / 2,
             this.registry.get('height') / 2 - 100,
             this.nextScene,
-            [ 'playGame' ],
+            [ 'levelSelect' ],
             this
         );
         play.addText('Play');
