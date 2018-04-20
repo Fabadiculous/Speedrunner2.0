@@ -11,6 +11,11 @@ class Button extends Phaser.GameObjects.Sprite {
         this.setClickEvents();
     }
 
+    setDimensions (width, height) {
+        this.displayWidth = width;
+        this.displayHeight = height;
+    }
+
     setClickEvents () {
         this.setInteractive();
         this.on('pointerover', () => this.setFrame(this.overFrame), this);
