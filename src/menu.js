@@ -9,23 +9,9 @@ class Menu extends Phaser.Scene {
     }
 
     init () {
-        // this.scene.bringToTop();
     }
 
     create () {
-        // let menuText = {
-        //     x: this.registry.get('width') / 2,
-        //     y: 0,
-        //     text: 'SPEEDRUNNER',
-        //     style: {
-        //         fontSize: '64px',
-        //         fontFamily: 'Arial',
-        //         color: '#FFD700',
-        //         align: 'center'
-        //     }
-        // };
-        // this.make.text(menuText).setOrigin(0.5, 0);
-
         // Menu Buttons
         let play = new Button(
             this.registry.get('width') / 2,

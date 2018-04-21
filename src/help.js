@@ -15,18 +15,6 @@ class Help extends Phaser.Scene {
     }
 
     create () {
-        // let helpTitle = {
-        //     x: this.registry.get('width') / 2,
-        //     y: 0,
-        //     text: 'HELP',
-        //     style: {
-        //         fontSize: '64px',
-        //         fontFamily: 'Arial',
-        //         color: '#FFD700',
-        //         align: 'center'
-        //     }
-        // };
-        // this.make.text(helpTitle).setOrigin(0.5, 0);
 
         let helpText = {
             x: this.registry.get('width') / 2,
