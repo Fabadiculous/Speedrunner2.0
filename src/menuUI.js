@@ -54,6 +54,7 @@ class MenuUI extends Phaser.Scene {
         this.backBtn = new Button(0, 0, this.backToMenu, [ currentScene ], this, 'Back');
 
         // Hacky
+        this.backBtn.setDimensions(100, 50);
         this.backBtn.x += this.backBtn.displayWidth / 2;
         this.backBtn.y += this.backBtn.displayHeight / 2;
         this.backBtn.text.x = this.backBtn.x;
