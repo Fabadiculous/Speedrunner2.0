@@ -49,16 +49,19 @@ class Preload extends Phaser.Scene {
 
         // Path for levels
         this.load.setPath('assets/levels');
-        this.load.tilemapTiledJSON('tutorial', 'Tutorial.json');
+        this.load.tilemapTiledJSON('tutorial', 'tutorial.json');
         for (let i = 1; i < 10; i++) {
             this.load.tilemapTiledJSON(`level${i}`, `Level${i}.json`);
         }
     }
 
     create () {
+        this.registry.set('width', this.sys.game.config.width);
+        this.registry.set('height', this.sys.game.config.height);
         this.scene.launch('background');
         this.scene.launch('createAnims');
         this.scene.launch('loadLevels');
+        this.scene.launch('menuUI', { title: 'SPEEDRUNNER', backBtn: false });
         this.scene.start('menu');
     }
 

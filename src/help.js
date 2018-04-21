@@ -1,4 +1,4 @@
-import Button from './Button';
+// import Button from './Button';
 
 class Help extends Phaser.Scene {
     constructor () {
@@ -9,28 +9,12 @@ class Help extends Phaser.Scene {
     }
 
     init () {
-        // this.scene.bringToTop();
+        let menuUI = this.scene.get('menuUI');
+        menuUI.setTitle('HELP');
+        menuUI.addBackBtn(this);
     }
 
     create () {
-        let menu = this.scene.get('menu');
-        let backBtn = new Button(0, 0, menu.nextScene, [ 'menu' ], this);
-        backBtn.setOrigin(0);
-        backBtn.addText('Back');
-
-
-        let helpTitle = {
-            x: this.registry.get('width') / 2,
-            y: 0,
-            text: 'HELP',
-            style: {
-                fontSize: '64px',
-                fontFamily: 'Arial',
-                color: '#FFD700',
-                align: 'center'
-            }
-        };
-        this.make.text(helpTitle).setOrigin(0.5, 0);
 
         let helpText = {
             x: this.registry.get('width') / 2,
