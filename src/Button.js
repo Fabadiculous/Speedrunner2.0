@@ -1,7 +1,6 @@
 class Button extends Phaser.GameObjects.Sprite {
     constructor (x, y, callback, params, scene, text = '', hover = 1, onDown = 2) {
         super(scene, x, y, 'button', 0);
-        console.log(this.x);
         this.scene = scene;
         this.params = params;
         this.callback = callback;
@@ -13,7 +12,6 @@ class Button extends Phaser.GameObjects.Sprite {
 
         this.overFrame = hover;
         this.downFrame = onDown;
-        // this.scene.add.existing(this);
         this.setClickEvents();
     }
 
