@@ -1,4 +1,4 @@
-// import Button from './Button';
+import Button from './Button';
 
 class LevelSelect extends Phaser.Scene {
     constructor () {
@@ -29,11 +29,45 @@ class LevelSelect extends Phaser.Scene {
         );
         this.helpTxt.setOrigin(0.5);
 
-        this.generateThumbnails();
+        this.generatelevelGrid();
     }
 
-    generateThumbnails () {
+    generatelevelGrid () {
+        let levels = this.registry.get('levels');
+        let thumbnailDim = 64;
+        let columns = 5;
+        let rows = 2;
+        let spacing = 50;
 
+        console.log(this.cache);
+
+        let rowlength = thumbnailDim * columns + spacing * (columns - 1);
+        let sideMargin = (this.registry.get('width') - rowlength) / 2;
+
+        let colHeight = thumbnailDim * rows + spacing * (rows - 1);
+        let topMargin = (this.registry.get('height') / 2 - colHeight);
+
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < columns; j++) {
+                let lvlNum = i * columns + j;
+                new Button(
+                    sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
+                    topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
+                    this.playGame,
+                    [ levels[lvlNum] ],
+                    this,
+                    lvlNum + 1,
+                    'lvlThumbnail',
+                    0,
+                    0,
+                    0
+                );
+            }
+        }
+    }
+
+    playGame (lvlNum) {
+        console.log('Play', lvlNum);
     }
 }
 
