@@ -15,6 +15,24 @@ class LevelSelect extends Phaser.Scene {
     }
 
     create () {
+        this.helpTxtStyle = {
+            font: '16px Arial',
+            color: '#000000',
+            align: 'center'
+        };
+
+        this.helpTxt = this.add.text(
+            this.registry.get('width') / 2,
+            this.registry.get('height') - 100,
+            'Hover for level information',
+            this.helpTxtStyle
+        );
+        this.helpTxt.setOrigin(0.5);
+
+        this.generateThumbnails();
+    }
+
+    generateThumbnails () {
 
     }
 }
