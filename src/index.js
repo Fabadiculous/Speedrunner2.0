@@ -9,6 +9,7 @@ import CreateAnims from './animations';
 import LoadLevels from './loadLevel';
 import LevelSelect from './levelSelect';
 import MenuUI from './menuUI';
+import Options from './options';
 
 const config = {
     type: Phaser.AUTO,
@@ -18,7 +19,7 @@ const config = {
     pixelArt: true,
     parent: 'gameDiv',
     scene: [ Preload, Menu, PlayGame, Background, Help, CreateAnims, LoadLevels,
-        LevelSelect, MenuUI ],
+        LevelSelect, MenuUI, Options ],
     title: 'Speedrunner 2.0',
     banner: {
         text: '#191970',
