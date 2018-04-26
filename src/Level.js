@@ -1,9 +1,9 @@
 class Level {
     constructor (key, starTime, devAllStar, devNoStar) {
-        this.key = key;
-        this.starTime = starTime;
-        this.devAllStar = devAllStar;
-        this.devNoStar = devNoStar;
+        this._key = key;
+        this._starTime = starTime;
+        this._devAllStar = devAllStar;
+        this._devNoStar = devNoStar;
         this._levelStars = {
             speed: false,
             enemies: false,
