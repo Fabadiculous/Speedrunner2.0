@@ -39,8 +39,6 @@ class LevelSelect extends Phaser.Scene {
         let rows = 2;
         let spacing = 50;
 
-        console.log(this.cache);
-
         let rowlength = thumbnailDim * columns + spacing * (columns - 1);
         let sideMargin = (this.registry.get('width') - rowlength) / 2;
 
@@ -66,8 +64,8 @@ class LevelSelect extends Phaser.Scene {
         }
     }
 
-    playGame (lvlNum) {
-        console.log('Play', lvlNum);
+    playGame (level) {
+        this.scene.start('playGame', level);
     }
 }
 
