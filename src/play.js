@@ -11,7 +11,6 @@ class PlayGame extends Phaser.Scene {
         menuUI.setTitle('');
         menuUI.removeBackBtn();
         this.level = data;
-        console.log(this.level);
     }
 
     create () {
@@ -20,7 +19,6 @@ class PlayGame extends Phaser.Scene {
         let tiles = this.map.addTilesetImage('groundTiles');
 
         let layer = this.map.createStaticLayer('GroundLayer', tiles);
-        console.log(layer);
     }
 }
 
