@@ -66,6 +66,7 @@ class LevelSelect extends Phaser.Scene {
 
     playGame (level) {
         this.scene.start('playGame', level);
+        this.scene.stop('menuUI');
     }
 }
 
