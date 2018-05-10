@@ -38,6 +38,9 @@ class LoadLevels extends Phaser.Scene {
             }
             return 0;
         });
+
+        // Take 'tutorial' from end of list and at to front
+        // This assumes all keys are 'level[number]' except tutorial
         this.levels.unshift(this.levels.pop());
         this.registry.set('levels', this.levels);
         this.scene.remove('loadLevels');
