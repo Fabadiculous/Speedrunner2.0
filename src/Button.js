@@ -1,6 +1,6 @@
 class Button extends Phaser.GameObjects.Sprite {
-    constructor (x, y, callback, params, scene, text = '', hover = 1, onDown = 2) {
-        super(scene, x, y, 'button', 0);
+    constructor (x, y, callback, params, scene, text = '', key = 'button', hover = 1, onDown = 2) {
+        super(scene, x, y, key, 0);
         this.scene = scene;
         this.params = params;
         this.callback = callback;

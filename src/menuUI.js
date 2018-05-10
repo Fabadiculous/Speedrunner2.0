@@ -46,8 +46,16 @@ class MenuUI extends Phaser.Scene {
     }
 
     setTitle (title) {
+        if(title === '') {
+            this.removeTitle();
+        }
         this.title = title;
+        this.displayTitle.visible = true;
         this.displayTitle.setText(this.title);
+    }
+
+    removeTitle () {
+        this.displayTitle.visible = false;
     }
 
     addBackBtn (currentScene) {
