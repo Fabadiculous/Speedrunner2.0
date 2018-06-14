@@ -10,11 +10,13 @@ import LoadLevels from './loadLevel';
 import LevelSelect from './levelSelect';
 import MenuUI from './menuUI';
 import Options from './options';
+import initialise from './initialise';
+import Config from './config';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: Config.DEFAULT_WIDTH,
+    height: Config.DEFAULT_HEIGHT,
     backgroundColor: '#87CEEB',
     pixelArt: true,
     parent: 'gameDiv',
@@ -34,5 +36,5 @@ const config = {
     }
 };
 
-/* eslint-disable no-unused-vars */
 const game = new Phaser.Game(config);
+initialise(game);
