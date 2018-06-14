@@ -25,17 +25,13 @@ module.exports = {
                         options: { minimize: true }
                     }
                 ]
-            },
-            {
-                test: [ /\.vert$/, /\.frag$/ ],
-                loader: 'raw-loader'
             }
         ]
     },
     plugins: [
         new webpack.DefinePlugin({
-            CANVAS_RENDERER: JSON.stringify(true),
-            WEBGL_RENDERER: JSON.stringify(true)
+            'typeof CANVAS_RENDERER': JSON.stringify(true),
+            'typeof WEBGL_RENDERER': JSON.stringify(true)
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
