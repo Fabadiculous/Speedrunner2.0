@@ -19,27 +19,28 @@ class Preload extends Phaser.Scene {
         this.load.on('complete', () => progress.destroy());
 
         // Path for images and sprite sheets
-        this.load.setPath('assets/images/');
+        this.load.setPath('/assets/images/');
+
 
         this.load.image([
-            { key: 'clouds', file: 'Clouds.png'},
-            { key: 'sky', file: 'Sky.png'},
-            { key: 'spike', file: 'Spike.png'},
-            { key: 'pauseMenu', file: 'PauseMenu.png'},
-            { key: 'door', file: 'Door.png'}
+            { key: 'clouds', url: 'Clouds.png'},
+            { key: 'sky', url: 'Sky.png'},
+            { key: 'spike', url: 'Spike.png'},
+            { key: 'pauseMenu', url: 'PauseMenu.png'},
+            { key: 'door', url: 'Door.png'}
         ]);
 
         this.load.spritesheet([
-            { key: 'button', file: 'Button.png', config: {frameWidth: 200, frameHeight: 50} },
-            { key: 'coin', file: 'Coin.png', config: {frameWidth: 16, frameHeight: 16} },
-            { key: 'snake', file: 'Enemy.png', config: {frameWidth: 32, frameHeight: 32} },
-            { key: 'flyEnemy', file: 'FlyingEnemy.png', config: {frameWidth: 25, frameHeight: 23} },
-            { key: 'movingPlatform', file: 'MovingPlatform.png', config: {frameWidth: 64, frameHeight: 32} },
-            { key: 'player', file: 'Player.png', config: {frameWidth: 16, frameHeight: 32} },
-            { key: 'groundTiles', file: 'GroundTiles.png', config: {frameWidth: 64, frameHeight: 64} },
-            { key: 'soundBtn', file: 'SoundButtons.png', config: {frameWidth: 64, frameHeight: 64} },
-            { key: 'star', file: 'Stars.png', config: {frameWidth: 20, frameHeight: 20} },
-            { key: 'lvlThumbnail', file: 'Thumbnail.png', config: {frameWidth: 64, frameHeight: 64} }
+            { key: 'button', url: 'Button.png', frameConfig: {frameWidth: 200, frameHeight: 50} },
+            { key: 'coin', url: 'Coin.png', frameConfig: {frameWidth: 16, frameHeight: 16} },
+            { key: 'snake', url: 'Enemy.png', frameConfig: {frameWidth: 32, frameHeight: 32} },
+            { key: 'flyEnemy', url: 'FlyingEnemy.png', frameConfig: {frameWidth: 25, frameHeight: 23} },
+            { key: 'movingPlatform', url: 'MovingPlatform.png', frameConfig: {frameWidth: 64, frameHeight: 32} },
+            { key: 'player', url: 'Player.png', frameConfig: {frameWidth: 16, frameHeight: 32} },
+            { key: 'groundTiles', url: 'GroundTiles.png', frameConfig: {frameWidth: 64, frameHeight: 64} },
+            { key: 'soundBtn', url: 'SoundButtons.png', frameConfig: {frameWidth: 64, frameHeight: 64} },
+            { key: 'star', url: 'Stars.png', frameConfig: {frameWidth: 20, frameHeight: 20} },
+            { key: 'lvlThumbnail', url: 'Thumbnail.png', frameConfig: {frameWidth: 64, frameHeight: 64} }
         ]);
 
         // Path for audio
