@@ -12,6 +12,7 @@ import LevelSelect from './levelSelect';
 import MenuUI from './menuUI';
 import Options from './options';
 import Config from './config';
+import PauseMenu from './pauseMenu';
 
 window.onload = function () {
     const config = {
@@ -23,7 +24,7 @@ window.onload = function () {
         pixelArt: true,
         parent: 'gameDiv',
         scene: [ Preload, Menu, PlayGame, Background, Help, CreateAnims, LoadLevels,
-            LevelSelect, MenuUI, Options ],
+            LevelSelect, MenuUI, Options, PauseMenu ],
         title: 'Speedrunner 2.0',
         banner: {
             text: '#191970',
