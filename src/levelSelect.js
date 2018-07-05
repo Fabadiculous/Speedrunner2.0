@@ -31,14 +31,6 @@ class LevelSelect extends Phaser.Scene {
         this.helpTxt.setOrigin(0.5);
 
         this.generatelevelGrid();
-
-
-        // let test = this.add.sprite(100, 500, 'button');
-        // test.setFrame(1);
-        //
-        // let buttonConfig = { key: 'button', frame: 1 };
-        // this.add.nineslice(400, 400, 200, 50, buttonConfig, 0);
-        // createButton(500, 500, 100, 50, 0, 'button', 'test', this);
     }
 
     generatelevelGrid () {
@@ -58,17 +50,6 @@ class LevelSelect extends Phaser.Scene {
             for (let j = 0; j < columns; j++) {
                 let lvlNum = i * columns + j;
 
-                // let currentThumbnail = new Button(
-                //     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
-                //     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
-                //     this.playGame,
-                //     [ levels[lvlNum] ],
-                //     this,
-                //     lvlNum + 1,
-                //     'lvlThumbnail',
-                //     0,
-                //     0
-                // );
                 let currentThumbnail = this.createThumbnail(
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
@@ -80,10 +61,8 @@ class LevelSelect extends Phaser.Scene {
 
                 if (levels[lvlNum].locked) {
                     currentThumbnail.setFrame(1);
-                    //currentThumbnail.deactivate();
                 } else {
                     currentThumbnail.setFrame(0);
-                    //currentThumbnail.activate();
                 }
             }
         }
@@ -102,7 +81,10 @@ class LevelSelect extends Phaser.Scene {
         });
 
         thumbnail.on('pointerover', () => {
-            this.displayLvlInfo();
+            // In this case the args passed in is a Level object
+            // It is an array. This argument expects a level object not
+            // a single size array, so just pass the forst element
+            this.displayLvlInfo(args[0]);
         });
 
         thumbnail.on('pointerout', () => {
@@ -119,12 +101,19 @@ class LevelSelect extends Phaser.Scene {
         }
     }
 
-    displayLvlInfo () {
-        console.log('Display info');
+    displayLvlInfo (level) {
+        console.log(level);
+        this.helpTxt.setText(`
+            Level: ${level.key}\n
+            Star Time: ${level.starTime}
+            Dev Time (No Stars): ${level.devNoStar}
+            Dev Time (All Stars): ${level.devAllStar}
+            Your Best: ${level}
+            `);
     }
 
     clearLvlInfo () {
-        console.log('CLEAR INFO');
+        this.helpTxt.setText('Hover for level information');
     }
 }
 
