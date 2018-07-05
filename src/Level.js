@@ -66,6 +66,14 @@ class Level {
     validateTimes (time) {
         return time !== undefined ? time : 'Not Recorded';
     }
+
+    get locked () {
+        return this._locked;
+    }
+
+    set locked (isLocked) {
+        this._locked = isLocked;
+    }
 }
 
 export default Level;
