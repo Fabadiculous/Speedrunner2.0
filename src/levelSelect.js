@@ -1,5 +1,5 @@
-import Button from './Button';
-import createButton from './createButton';
+// import Button from './Button';
+// import createButton from './createButton';
 
 class LevelSelect extends Phaser.Scene {
     constructor () {
@@ -57,31 +57,74 @@ class LevelSelect extends Phaser.Scene {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 let lvlNum = i * columns + j;
-                let currentThumbnail = new Button(
+
+                // let currentThumbnail = new Button(
+                //     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
+                //     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
+                //     this.playGame,
+                //     [ levels[lvlNum] ],
+                //     this,
+                //     lvlNum + 1,
+                //     'lvlThumbnail',
+                //     0,
+                //     0
+                // );
+                let currentThumbnail = this.createThumbnail(
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
+                    lvlNum + 1,
                     this.playGame,
                     [ levels[lvlNum] ],
-                    this,
-                    lvlNum + 1,
-                    'lvlThumbnail',
-                    0,
-                    0
+                    this
                 );
+
                 if (levels[lvlNum].locked) {
                     currentThumbnail.setFrame(1);
-                    currentThumbnail.deactivate();
+                    //currentThumbnail.deactivate();
                 } else {
                     currentThumbnail.setFrame(0);
-                    currentThumbnail.activate();
+                    //currentThumbnail.activate();
                 }
             }
         }
     }
 
+    createThumbnail (x, y, text, callback, args, context) {
+        let thumbnail = this.add.sprite(x, y, 'lvlThumbnail');
+        thumbnail.setFrame(0);
+
+        let lvlText = this.add.text(thumbnail.x, thumbnail.y, text);
+        lvlText.setOrigin(0.5);
+        thumbnail.setInteractive();
+
+        thumbnail.on('pointerdown', () => {
+            callback.apply(context, args);
+        });
+
+        thumbnail.on('pointerover', () => {
+            this.displayLvlInfo();
+        });
+
+        thumbnail.on('pointerout', () => {
+            this.clearLvlInfo();
+        });
+
+        return thumbnail;
+    }
+
     playGame (level) {
-        this.scene.start('playGame', level);
-        this.scene.stop('menuUI');
+        if (!level.locked) {
+            this.scene.start('playGame', level);
+            this.scene.stop('menuUI');
+        }
+    }
+
+    displayLvlInfo () {
+        console.log('Display info');
+    }
+
+    clearLvlInfo () {
+        console.log('CLEAR INFO');
     }
 }
 
