@@ -48,7 +48,7 @@ class Level {
     }
 
     get devNoStar () {
-        return this._devNoStarTime;
+        return this._devNoStar;
     }
 
     set devNoStar (time) {
