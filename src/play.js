@@ -21,7 +21,7 @@ class PlayGame extends Phaser.Scene {
         let layer = this.map.createStaticLayer('GroundLayer', tiles);
 
         this.input.keyboard.on('keydown_P', () => {
-            this.scene.pause();
+            this.scene.pause('playGame');
             this.scene.launch('pauseMenu');
         });
     }
