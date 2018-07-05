@@ -54,9 +54,7 @@ class LevelSelect extends Phaser.Scene {
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
                     lvlNum + 1,
-                    this.playGame,
-                    [ levels[lvlNum] ],
-                    this
+                    levels[lvlNum]
                 );
 
                 if (levels[lvlNum].locked) {
@@ -68,7 +66,7 @@ class LevelSelect extends Phaser.Scene {
         }
     }
 
-    createThumbnail (x, y, text, callback, args, context) {
+    createThumbnail (x, y, text, level) {
         let thumbnail = this.add.sprite(x, y, 'lvlThumbnail');
         thumbnail.setFrame(0);
 
@@ -77,14 +75,11 @@ class LevelSelect extends Phaser.Scene {
         thumbnail.setInteractive();
 
         thumbnail.on('pointerdown', () => {
-            callback.apply(context, args);
+            this.playGame(level);
         });
 
         thumbnail.on('pointerover', () => {
-            // In this case the args passed in is a Level object
-            // It is an array. This argument expects a level object not
-            // a single size array, so just pass the forst element
-            this.displayLvlInfo(args[0]);
+            this.displayLvlInfo(level);
         });
 
         thumbnail.on('pointerout', () => {
@@ -104,11 +99,12 @@ class LevelSelect extends Phaser.Scene {
     displayLvlInfo (level) {
         console.log(level);
         this.helpTxt.setText(`
-            Level: ${level.key}\n
+            Level: ${level.key}
             Star Time: ${level.starTime}
             Dev Time (No Stars): ${level.devNoStar}
+            Your Best Time (Any Star Time): ${level.playerAnyTime}
             Dev Time (All Stars): ${level.devAllStar}
-            Your Best: ${level}
+            Your Best Time (All Stars): ${level.playerStarTime}
             `);
     }
 
