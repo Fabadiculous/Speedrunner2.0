@@ -1,4 +1,5 @@
 import Button from './Button';
+import createButton from './createButton';
 
 class LevelSelect extends Phaser.Scene {
     constructor () {
@@ -30,6 +31,14 @@ class LevelSelect extends Phaser.Scene {
         this.helpTxt.setOrigin(0.5);
 
         this.generatelevelGrid();
+
+
+        // let test = this.add.sprite(100, 500, 'button');
+        // test.setFrame(1);
+        //
+        // let buttonConfig = { key: 'button', frame: 1 };
+        // this.add.nineslice(400, 400, 200, 50, buttonConfig, 0);
+        // createButton(500, 500, 100, 50, 0, 'button', 'test', this);
     }
 
     generatelevelGrid () {
@@ -48,7 +57,7 @@ class LevelSelect extends Phaser.Scene {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 let lvlNum = i * columns + j;
-                new Button(
+                let currentThumbnail = new Button(
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
                     this.playGame,
@@ -57,9 +66,15 @@ class LevelSelect extends Phaser.Scene {
                     lvlNum + 1,
                     'lvlThumbnail',
                     0,
-                    0,
                     0
                 );
+                if (levels[lvlNum].locked) {
+                    currentThumbnail.setFrame(1);
+                    currentThumbnail.deactivate();
+                } else {
+                    currentThumbnail.setFrame(0);
+                    currentThumbnail.activate();
+                }
             }
         }
     }
