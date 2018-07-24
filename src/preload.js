@@ -27,7 +27,7 @@ class Preload extends Phaser.Scene {
             { key: 'sky', url: 'Sky.png'},
             { key: 'spike', url: 'Spike.png'},
             { key: 'pauseMenu', url: 'PauseMenu.png'},
-            { key: 'door', url: 'Door.png'}
+            { key: 'exit', url: 'Door.png'}
         ]);
 
         this.load.spritesheet([
