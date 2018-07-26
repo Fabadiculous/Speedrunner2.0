@@ -9,6 +9,8 @@ class Menu extends Phaser.Scene {
     }
 
     init () {
+        let menuUI = this.scene.get('menuUI');
+        menuUI.setTitle('SPEEDRUNNER');
     }
 
     create () {

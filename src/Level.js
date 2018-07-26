@@ -9,8 +9,8 @@ class Level {
             enemies: false,
             coins: false
         };
-        this._playerStarTime = 100;
-        this._playerAnyTime = 100;
+        this._playerStarTime = 'Not Recorded';
+        this._playerAnyTime = 'Not Recorded';
         this._locked = true;
         this._current = false;
         this._complete = false;
@@ -48,7 +48,7 @@ class Level {
     }
 
     get devNoStar () {
-        return this._devNoStarTime;
+        return this._devNoStar;
     }
 
     set devNoStar (time) {
@@ -63,8 +63,24 @@ class Level {
         return this._playerStarTime;
     }
 
+    set playerAnyTime (time) {
+        this._playerAnyTime = time;
+    }
+
+    get playerAnyTime () {
+        return this._playerAnyTime;
+    }
+
     validateTimes (time) {
         return time !== undefined ? time : 'Not Recorded';
+    }
+
+    get locked () {
+        return this._locked;
+    }
+
+    set locked (isLocked) {
+        this._locked = isLocked;
     }
 }
 

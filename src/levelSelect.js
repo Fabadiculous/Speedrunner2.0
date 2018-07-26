@@ -1,4 +1,5 @@
-import Button from './Button';
+// import Button from './Button';
+// import createButton from './createButton';
 
 class LevelSelect extends Phaser.Scene {
     constructor () {
@@ -48,25 +49,67 @@ class LevelSelect extends Phaser.Scene {
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
                 let lvlNum = i * columns + j;
-                new Button(
+
+                let currentThumbnail = this.createThumbnail(
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
-                    this.playGame,
-                    [ levels[lvlNum] ],
-                    this,
                     lvlNum + 1,
-                    'lvlThumbnail',
-                    0,
-                    0,
-                    0
+                    levels[lvlNum]
                 );
+
+                if (levels[lvlNum].locked) {
+                    currentThumbnail.setFrame(1);
+                } else {
+                    currentThumbnail.setFrame(0);
+                }
             }
         }
     }
 
+    createThumbnail (x, y, text, level) {
+        let thumbnail = this.add.sprite(x, y, 'lvlThumbnail');
+        thumbnail.setFrame(0);
+
+        let lvlText = this.add.text(thumbnail.x, thumbnail.y, text);
+        lvlText.setOrigin(0.5);
+        thumbnail.setInteractive();
+
+        thumbnail.on('pointerdown', () => {
+            this.playGame(level);
+        });
+
+        thumbnail.on('pointerover', () => {
+            this.displayLvlInfo(level);
+        });
+
+        thumbnail.on('pointerout', () => {
+            this.clearLvlInfo();
+        });
+
+        return thumbnail;
+    }
+
     playGame (level) {
-        this.scene.start('playGame', level);
-        this.scene.stop('menuUI');
+        if (!level.locked) {
+            this.scene.start('playGame', level);
+            this.scene.stop('menuUI');
+        }
+    }
+
+    displayLvlInfo (level) {
+        console.log(level);
+        this.helpTxt.setText(`
+            Level: ${level.key}
+            Star Time: ${level.starTime}
+            Dev Time (No Stars): ${level.devNoStar}
+            Your Best Time (Any Star Time): ${level.playerAnyTime}
+            Dev Time (All Stars): ${level.devAllStar}
+            Your Best Time (All Stars): ${level.playerStarTime}
+            `);
+    }
+
+    clearLvlInfo () {
+        this.helpTxt.setText('Hover for level information');
     }
 }
 

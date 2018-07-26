@@ -5,6 +5,7 @@ class Button extends Phaser.GameObjects.Sprite {
         this.params = params;
         this.callback = callback;
 
+        this.active = true;
 
         this.text = this.addText(text);
 
@@ -16,12 +17,23 @@ class Button extends Phaser.GameObjects.Sprite {
     }
 
     deactivate () {
+        this.active = false;
+        this.disableInteractive();
+    }
+
+    activate () {
+        if (!this.active) {
+            this.setClickEvents();
+        }
+
+    }
+
+    remove () {
         this.setActive(false);
         this.setVisible(false);
         if(this.text) {
             this.text.destroy();
         }
-
     }
 
     setDimensions (width, height) {
@@ -30,6 +42,7 @@ class Button extends Phaser.GameObjects.Sprite {
     }
 
     setClickEvents () {
+        this.active = true;
         this.setInteractive();
         this.on('pointerover', () => this.setFrame(this.overFrame), this);
         this.on('pointerout', () => this.setFrame(0), this);

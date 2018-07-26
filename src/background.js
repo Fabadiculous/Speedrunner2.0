@@ -1,3 +1,5 @@
+import Config from './config';
+
 class Background extends Phaser.Scene {
     constructor () {
         super({
@@ -12,7 +14,7 @@ class Background extends Phaser.Scene {
 
     create () {
         this.add.image(0, 0, 'sky').setOrigin(0);
-        this.clouds = this.add.tileSprite(0, 0, this.sys.game.config.width, this.sys.game.config.height, 'clouds').setOrigin(0);
+        this.clouds = this.add.tileSprite(0, 0, Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT, 'clouds').setOrigin(0);
     }
 
     update () {
