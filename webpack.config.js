@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 /* eslint-disable no-undef */
 
 module.exports = {
@@ -39,6 +41,7 @@ module.exports = {
         }),
         new CopyWebpackPlugin(
             [ { from: 'src/assets', to: 'assets' } ]
-        )
+        ) // ,
+        // new BundleAnalyzerPlugin()
     ]
 };
