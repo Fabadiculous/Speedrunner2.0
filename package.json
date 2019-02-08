@@ -17,12 +17,12 @@
     "copy-webpack-plugin": "^4.6.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.29.0"
+    "webpack": "^4.29.3"
   },
   "dependencies": {
-    "phaser": "^3.16.0-rc1",
+    "phaser": "^3.16.1",
     "phaser3-nineslice": "^0.3.7",
-    "webpack-cli": "^3.2.1",
+    "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
   }
 }
