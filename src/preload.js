@@ -37,7 +37,7 @@ class Preload extends Phaser.Scene {
             { key: 'flyEnemy', url: 'FlyingEnemy.png', frameConfig: {frameWidth: 25, frameHeight: 23} },
             { key: 'movingPlatform', url: 'MovingPlatform.png', frameConfig: {frameWidth: 64, frameHeight: 32} },
             { key: 'player', url: 'Player.png', frameConfig: {frameWidth: 16, frameHeight: 32} },
-            { key: 'groundTiles', url: 'GroundTiles.png', frameConfig: {frameWidth: 64, frameHeight: 64} },
+            { key: 'groundTiles', url: 'GroundTiles.png', frameConfig: {frameWidth: 32, frameHeight: 32} },
             { key: 'soundBtn', url: 'SoundButtons.png', frameConfig: {frameWidth: 64, frameHeight: 64} },
             { key: 'star', url: 'Stars.png', frameConfig: {frameWidth: 20, frameHeight: 20} },
             { key: 'lvlThumbnail', url: 'Thumbnail.png', frameConfig: {frameWidth: 64, frameHeight: 64} }
