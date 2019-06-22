@@ -97,7 +97,6 @@ class LevelSelect extends Phaser.Scene {
     }
 
     displayLvlInfo (level) {
-        console.log(level);
         this.helpTxt.setText(`
             Level: ${level.key}
             Star Time: ${level.starTime}

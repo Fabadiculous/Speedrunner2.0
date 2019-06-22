@@ -70,7 +70,7 @@ class MenuUI extends Phaser.Scene {
     }
 
     removeBackBtn () {
-        this.backBtn.deactivate();
+        this.backBtn.remove();
     }
 }
 
