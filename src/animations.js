@@ -1,16 +1,16 @@
 class CreateAnims extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'createAnims',
             plugins: []
         });
     }
 
-    create () {
+    create() {
         console.log('Creating animations');
         let playerConfig = {
             key: 'run',
-            frames: this.anims.generateFrameNumbers('player', {start: 0, end: 13}),
+            frames: this.anims.generateFrameNumbers('player', { start: 0, end: 13 }),
             frameRate: 20,
             repeat: -1
         };
@@ -50,6 +50,8 @@ class CreateAnims extends Phaser.Scene {
         this.anims.create(platformConfig);
         this.anims.create(flyConfig);
         this.anims.create(snakeConfig);
+
+        console.log('Animations Created');
 
         // End the Scene
         this.scene.remove('createAnims');
