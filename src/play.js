@@ -1,14 +1,16 @@
 import Player from './Player';
+import Config from './config';
 
 class PlayGame extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'playGame',
-            plugins: [ 'InputPlugin' ]
+
+            plugins: ['InputPlugin']
         });
     }
 
-    init (data) {
+    init(data) {
         let menuUI = this.scene.get('menuUI');
         menuUI.setTitle('');
         menuUI.removeBackBtn();
@@ -18,13 +20,13 @@ class PlayGame extends Phaser.Scene {
         }
     }
 
-    create () {
+    create() {
         let map = this.make.tilemap({ key: this.level.key });
         this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
         this.physics.world.setBoundsCollision();
-        let tiles = map.addTilesetImage('groundTiles');
-        let groundLayer = map.createStaticLayer('GroundLayer', tiles);
-        groundLayer.setCollisionByProperty({collides: true});
+        let groundTiles = map.addTilesetImage('groundTiles');
+        let groundLayer = map.createStaticLayer('GroundLayer', groundTiles, 0, 0);
+        groundLayer.setCollisionByProperty({ collides: true });
 
         const debugGraphics = this.add.graphics().setAlpha(0.75);
         map.renderDebug(debugGraphics, {
@@ -32,6 +34,23 @@ class PlayGame extends Phaser.Scene {
             collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
             faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
         }, groundLayer);
+
+        let objectSet = map.getTileset('Objects');
+
+        console.log(objectSet);
+
+        let coins = map.createFromObjects('Objects', 24, Phaser.Utils.Objects.Extend({ key: 'coin' }, objectSet.tileProperties), this);
+
+        // let spikes = map.createFromObjects('Objects', 23, {key: 'spike'}, this);
+
+        // GID REFERENCE
+        // SPIKE = 23
+        // COIN = 24
+        // Fly = 26
+        // Snake = 27
+        // 28 = exit
+        // 1 = moving platyform
+
 
         // let spikes = map.createFromObjects('Objects', 23, { key: 'spike' });
         // spikes.forEach(spike => {
@@ -43,7 +62,7 @@ class PlayGame extends Phaser.Scene {
         //     }
         //     spike.rotation = 0;
         // });
-        
+
         // map.createFromObjects('Objects', 24, { key: 'coin'});
         let spawn = map.findObject('Objects', obj => obj.name === 'Spawn');
 
@@ -57,16 +76,20 @@ class PlayGame extends Phaser.Scene {
             this.scene.launch('pauseMenu');
         });
 
-        let player = new Player(this, spawn.x, spawn.y);
+        this.player = new Player(this, spawn.x, spawn.y, Config.controls);
 
-        this.physics.collide(player, groundLayer);
+        this.physics.add.collider(this.player, groundLayer);
         const camera = this.cameras.main;
-        camera.startFollow(player);
+        camera.startFollow(this.player);
         camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-        
+
         // ///////DEBUG////////
         // this.scene.start('playGame', this.level++);
         // this.scene.stop('menuUI');
+    }
+
+    update() {
+
     }
 }
 
