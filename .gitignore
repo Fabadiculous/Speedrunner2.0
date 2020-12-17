@@ -1,3 +1,5 @@
 /node_modules/
 *.tsx
 .vscode
+
+dist/

@@ -23,12 +23,11 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.body.setOffset(-1, 0);
 
         // this.setGravityY(this.gravity * this.TILESIZE);
-        this.setGravityY(1000);
+        this.setGravityY(100);
         this.jumping = false;
     }
 
-    preUpdate(time, delta) {
-
+    update(time, delta) {
         if (this.controls.run.isDown) {
             this.running = 0.25;
         } else {
@@ -36,10 +35,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         if (this.controls.right.isDown) {
-            this.setScale(1, 1);
-            console.log(this.body.velocity.x);
-
+            this.setFlipX(false);
             this.body.velocity.x = this.XSPEED + this.running;
+
             this.x += this.body.velocity.x * delta;
             if (this.body.velocity.y === 0) {
                 if (!this.anims.isPlaying) {
@@ -48,6 +46,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             }
         } else if (this.controls.left.isDown) {
             this.setFlipX(true);
+
             this.body.velocity.x = -(this.XSPEED + this.running);
             this.x += this.body.velocity.x * delta;
             if (this.body.velocity.y === 0) {
@@ -64,17 +63,20 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.setFrame(this.IDLE);
         }
 
-        // if (this.controls.jump.isDown && this.body.onFloor()) {
-        //     this.jump();
-        // }
+        if (this.controls.jump.isDown /* && this.body.onFloor() */) {
+            this.jump(delta);
+        }
     }
 
-    jump() {
+    jump(delta) {
         if (!this.jumping) {
             this.jumping = true;
             this.anims.stop();
             this.setFrame(this.JUMP);
-            this.setVelocityY(-this.initialV * this.TILESIZE);
+            this.body.velocity.y = (-this.initialV * this.TILESIZE);
+            this.y += this.body.velocity.y * delta;
+        } else {
+            this.jumping = false;
         }
     }
 }

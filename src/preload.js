@@ -1,12 +1,14 @@
+// import cloud from './assets/images/Clouds.png'
+
 class Preload extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'Prelaod',
-            plugins: [ 'Loader' ]
+            plugins: ['Loader']
         });
     }
 
-    preload () {
+    preload() {
 
         let progress = this.add.graphics();
 
@@ -23,30 +25,30 @@ class Preload extends Phaser.Scene {
 
 
         this.load.image([
-            { key: 'clouds', url: 'Clouds.png'},
-            { key: 'sky', url: 'Sky.png'},
-            { key: 'spike', url: 'Spike.png'},
-            { key: 'pauseMenu', url: 'PauseMenu.png'},
-            { key: 'exit', url: 'Door.png'}
+            { key: 'clouds', url: 'Clouds.png' },
+            { key: 'sky', url: 'Sky.png' },
+            { key: 'spike', url: 'Spike.png' },
+            { key: 'pauseMenu', url: 'PauseMenu.png' },
+            { key: 'exit', url: 'Door.png' }
         ]);
 
         this.load.spritesheet([
-            { key: 'button', url: 'Button.png', frameConfig: {frameWidth: 200, frameHeight: 50} },
-            { key: 'coin', url: 'Coin.png', frameConfig: {frameWidth: 16, frameHeight: 16} },
-            { key: 'snake', url: 'Enemy.png', frameConfig: {frameWidth: 32, frameHeight: 32} },
-            { key: 'flyEnemy', url: 'FlyingEnemy.png', frameConfig: {frameWidth: 25, frameHeight: 23} },
-            { key: 'movingPlatform', url: 'MovingPlatform.png', frameConfig: {frameWidth: 64, frameHeight: 32} },
-            { key: 'player', url: 'Player.png', frameConfig: {frameWidth: 16, frameHeight: 32} },
-            { key: 'groundTiles', url: 'GroundTiles.png', frameConfig: {frameWidth: 32, frameHeight: 32} },
-            { key: 'soundBtn', url: 'SoundButtons.png', frameConfig: {frameWidth: 64, frameHeight: 64} },
-            { key: 'star', url: 'Stars.png', frameConfig: {frameWidth: 20, frameHeight: 20} },
-            { key: 'lvlThumbnail', url: 'Thumbnail.png', frameConfig: {frameWidth: 64, frameHeight: 64} }
+            { key: 'button', url: 'Button.png', frameConfig: { frameWidth: 200, frameHeight: 50 } },
+            { key: 'coin', url: 'Coin.png', frameConfig: { frameWidth: 16, frameHeight: 16 } },
+            { key: 'snake', url: 'Enemy.png', frameConfig: { frameWidth: 32, frameHeight: 32 } },
+            { key: 'flyEnemy', url: 'FlyingEnemy.png', frameConfig: { frameWidth: 25, frameHeight: 23 } },
+            { key: 'movingPlatform', url: 'MovingPlatform.png', frameConfig: { frameWidth: 64, frameHeight: 32 } },
+            { key: 'player', url: 'Player.png', frameConfig: { frameWidth: 16, frameHeight: 32 } },
+            { key: 'groundTiles', url: 'GroundTiles.png', frameConfig: { frameWidth: 32, frameHeight: 32 } },
+            { key: 'soundBtn', url: 'SoundButtons.png', frameConfig: { frameWidth: 64, frameHeight: 64 } },
+            { key: 'star', url: 'Stars.png', frameConfig: { frameWidth: 20, frameHeight: 20 } },
+            { key: 'lvlThumbnail', url: 'Thumbnail.png', frameConfig: { frameWidth: 64, frameHeight: 64 } }
         ]);
 
         // Path for audio
         this.load.setPath('assets/sounds');
 
-        this.load.audio('getStar', [ 'getStar.mp3', 'getStar.ogg' ]);
+        this.load.audio('getStar', ['getStar.mp3', 'getStar.ogg']);
 
         // Path for levels
         this.load.setPath('assets/levels');
@@ -56,7 +58,7 @@ class Preload extends Phaser.Scene {
         }
     }
 
-    create () {
+    create() {
         this.registry.set('width', this.sys.game.config.width);
         this.registry.set('height', this.sys.game.config.height);
         this.scene.launch('background');

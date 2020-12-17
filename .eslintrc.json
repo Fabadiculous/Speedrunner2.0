@@ -40,9 +40,7 @@
 
         "array-bracket-spacing": ["error", "always"],
         "block-spacing": ["error", "always"],
-        "brace-style": ["error", "1tbs", {
-            "allowSingleLine": true
-        }],
+        "brace-style": ["error", "1tbs"],
         "camelcase": "error",
         "comma-dangle": ["error", "never"],
         "comma-style": ["error", "last"],
@@ -79,13 +77,13 @@
         }],
         "no-underscore-dangle": "off",
         "no-whitespace-before-property": "error",
-        "object-curly-newline": ["error", {
+        "object-curly-newline": ["none", {
             "multiline": true,
-            "minProperties": 0
+            "minProperties": 1
         }],
         "one-var-declaration-per-line": ["error", "initializations"],
         "quote-props": ["error", "as-needed"],
-        "quotes": ["error", "single"],
+        "quotes": ["error", "double"],
         "semi-spacing": ["error", {
             "before": false,
             "after": true

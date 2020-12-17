@@ -4,9 +4,9 @@ import Config from './config';
 class PlayGame extends Phaser.Scene {
     constructor() {
         super({
-            key: 'playGame',
+            key: 'playGame'
 
-            plugins: ['InputPlugin']
+            // plugins: ['InputPlugin']
         });
     }
 
@@ -43,6 +43,8 @@ class PlayGame extends Phaser.Scene {
 
         // let spikes = map.createFromObjects('Objects', 23, {key: 'spike'}, this);
 
+
+
         // GID REFERENCE
         // SPIKE = 23
         // COIN = 24
@@ -63,6 +65,7 @@ class PlayGame extends Phaser.Scene {
         //     spike.rotation = 0;
         // });
 
+
         // map.createFromObjects('Objects', 24, { key: 'coin'});
         let spawn = map.findObject('Objects', obj => obj.name === 'Spawn');
 
@@ -76,6 +79,8 @@ class PlayGame extends Phaser.Scene {
             this.scene.launch('pauseMenu');
         });
 
+
+
         this.player = new Player(this, spawn.x, spawn.y, Config.controls);
 
         this.physics.add.collider(this.player, groundLayer);
@@ -86,10 +91,11 @@ class PlayGame extends Phaser.Scene {
         // ///////DEBUG////////
         // this.scene.start('playGame', this.level++);
         // this.scene.stop('menuUI');
+
     }
 
-    update() {
-
+    update(time, delta) {
+        this.player.update(time, delta);
     }
 }
 
