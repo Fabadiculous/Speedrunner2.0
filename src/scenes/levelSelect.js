@@ -1,21 +1,18 @@
-// import Button from './Button';
-// import createButton from './createButton';
-
 class LevelSelect extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'levelSelect',
-            plugins: [ 'InputPlugin' ]
+            plugins: ['InputPlugin']
         });
     }
 
-    init () {
+    init() {
         let menuUI = this.scene.get('menuUI');
         menuUI.setTitle('LEVEL SELECT');
         menuUI.addBackBtn(this);
     }
 
-    create () {
+    create() {
         this.helpTxtStyle = {
             font: '16px Arial',
             color: '#000000',
@@ -33,7 +30,7 @@ class LevelSelect extends Phaser.Scene {
         this.generatelevelGrid();
     }
 
-    generatelevelGrid () {
+    generatelevelGrid() {
         let levels = this.registry.get('levels');
         let thumbnailDim = 64;
         let columns = 5;
@@ -66,7 +63,7 @@ class LevelSelect extends Phaser.Scene {
         }
     }
 
-    createThumbnail (x, y, text, level) {
+    createThumbnail(x, y, text, level) {
         let thumbnail = this.add.sprite(x, y, 'lvlThumbnail');
         thumbnail.setFrame(0);
 
@@ -89,14 +86,14 @@ class LevelSelect extends Phaser.Scene {
         return thumbnail;
     }
 
-    playGame (level) {
+    playGame(level) {
         if (!level.locked) {
             this.scene.start('playGame', level);
             this.scene.stop('menuUI');
         }
     }
 
-    displayLvlInfo (level) {
+    displayLvlInfo(level) {
         this.helpTxt.setText(`
             Level: ${level.key}
             Star Time: ${level.starTime}
@@ -107,7 +104,7 @@ class LevelSelect extends Phaser.Scene {
             `);
     }
 
-    clearLvlInfo () {
+    clearLvlInfo() {
         this.helpTxt.setText('Hover for level information');
     }
 }

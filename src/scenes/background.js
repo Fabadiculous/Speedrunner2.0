@@ -1,23 +1,23 @@
-import Config from './config';
+import Config from '../config';
 
 class Background extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'background',
             plugins: []
         });
     }
 
-    init () {
+    init() {
         this.scene.sendToBack();
     }
 
-    create () {
+    create() {
         this.add.image(0, 0, 'sky').setOrigin(0);
         this.clouds = this.add.tileSprite(0, 0, Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT, 'clouds').setOrigin(0);
     }
 
-    update () {
+    update() {
         this.clouds.tilePositionX += 0.2;
     }
 }

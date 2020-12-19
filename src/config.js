@@ -9,7 +9,8 @@ const Config = {
         jump: Phaser.Input.Keyboard.KeyCodes.SPACE,
         restart: Phaser.Input.Keyboard.KeyCodes.R,
         pause: Phaser.Input.Keyboard.KeyCodes.P
-    }
+    },
+    DEBUG: false //true
 };
 
 export default Config;

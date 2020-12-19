@@ -1,5 +1,3 @@
-// import cloud from './assets/images/Clouds.png'
-
 class Preload extends Phaser.Scene {
     constructor() {
         super({

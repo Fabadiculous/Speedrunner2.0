@@ -1,24 +1,24 @@
-import Config from './config';
+import Config from '../config';
 
 class Options extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'options',
-            plugins: [ 'InputPlugin' ]
+            plugins: ['InputPlugin']
         });
     }
 
-    init () {
+    init() {
         let menuUI = this.scene.get('menuUI');
         menuUI.setTitle('OPTIONS');
         menuUI.addBackBtn(this);
     }
 
-    create () {
+    create() {
         this.displayControlsText();
     }
 
-    displayControlsText () {
+    displayControlsText() {
         let controlTextStyle = {
             font: '32px Arial',
             fill: '#000000',
@@ -33,14 +33,14 @@ class Options extends Phaser.Scene {
         this.controlsText.setOrigin(0.5);
     }
 
-    controlsString () {
+    controlsString() {
         let result = '';
-        for (let [ key, value ] of Object.entries(Config.controls)) {
+        for (let [key, value] of Object.entries(Config.controls)) {
             result += `${key}: ${this.getKeyName(value)}\n`;
         }
         return result;
     }
-    getKeyName (keyCode) {
+    getKeyName(keyCode) {
         return Object.entries(Phaser.Input.Keyboard.KeyCodes).find(x => x[1] === keyCode)[0];
     }
 }

@@ -1,23 +1,23 @@
-import Button from './Button';
+import Button from '../classes/Button';
 
 class MenuUI extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'menuUI',
-            plugins: [ 'InputPlugin' ]
+            plugins: ['InputPlugin']
         });
         this.title;
         this.hasBackBtn;
     }
 
-    init (data) {
+    init(data) {
         this.scene.bringToTop();
         this.title = data.title;
         this.hasBackBtn = data.backBtn;
     }
 
-    create () {
-        if(this.hasBackBtn) {
+    create() {
+        if (this.hasBackBtn) {
             this.addBackBtn();
         } else if (this.backBtn) {
             this.removeBackBtn();
@@ -37,7 +37,7 @@ class MenuUI extends Phaser.Scene {
         this.displayTitle = this.make.text(titleConfig).setOrigin(0.5, 0);
     }
 
-    backToMenu (currentScene) {
+    backToMenu(currentScene) {
         currentScene.scene.stop();
         this.scene.launch('menu');
         this.removeBackBtn();
@@ -45,8 +45,8 @@ class MenuUI extends Phaser.Scene {
         this.scene.bringToTop();
     }
 
-    setTitle (title) {
-        if(title === '') {
+    setTitle(title) {
+        if (title === '') {
             this.removeTitle();
         }
         this.title = title;
@@ -54,12 +54,12 @@ class MenuUI extends Phaser.Scene {
         this.displayTitle.setText(this.title);
     }
 
-    removeTitle () {
+    removeTitle() {
         this.displayTitle.visible = false;
     }
 
-    addBackBtn (currentScene) {
-        this.backBtn = new Button(0, 0, this.backToMenu, [ currentScene ], this, 'Back');
+    addBackBtn(currentScene) {
+        this.backBtn = new Button(0, 0, this.backToMenu, [currentScene], this, 'Back');
 
         // Hacky
         this.backBtn.setDimensions(100, 50);
@@ -69,7 +69,7 @@ class MenuUI extends Phaser.Scene {
         this.backBtn.text.y = this.backBtn.y;
     }
 
-    removeBackBtn () {
+    removeBackBtn() {
         this.backBtn.remove();
     }
 }

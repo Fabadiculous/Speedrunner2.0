@@ -1,20 +1,18 @@
-// import Button from './Button';
-
 class Help extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'help',
-            plugins: [ 'InputPlugin' ]
+            plugins: ['InputPlugin']
         });
     }
 
-    init () {
+    init() {
         let menuUI = this.scene.get('menuUI');
         menuUI.setTitle('HELP');
         menuUI.addBackBtn(this);
     }
 
-    create () {
+    create() {
 
         let helpText = {
             x: this.registry.get('width') / 2,

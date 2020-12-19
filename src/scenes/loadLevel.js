@@ -1,14 +1,14 @@
-import Level from './Level';
+import Level from '../classes/Level';
 
 class LoadLevels extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'loadLevels',
             plugins: []
         });
     }
 
-    create () {
+    create() {
         this.levels = [];
 
         // All the tilemaps loaded in the cache
@@ -31,10 +31,10 @@ class LoadLevels extends Phaser.Scene {
             }
         }
 
-        this.levels.sort((a,b) => {
+        this.levels.sort((a, b) => {
             let keyA = a.key;
             let keyB = b.key;
-            if(keyA < keyB) {
+            if (keyA < keyB) {
                 return -1;
             }
             if (keyA > keyB) {
