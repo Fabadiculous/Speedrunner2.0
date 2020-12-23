@@ -41,7 +41,7 @@ class PlayGame extends Phaser.Scene {
         // Fly = 26
         // Snake = 27
         // 28 = exit
-        // 1 = moving platyform
+        // 1 = moving platform
         let objects = map.createFromObjects('Objects', [
             { gid: 24, key: 'coin' },
             { gid: 23, key: 'spike' },
@@ -50,21 +50,6 @@ class PlayGame extends Phaser.Scene {
             { gid: 28, key: 'exit' },
             { gid: 1, key: 'movingPlatform' },
         ]);
-        console.log(objects)
-
-
-
-        // let spikes = map.createFromObjects('Objects', 23, { key: 'spike' });
-        // spikes.forEach(spike => {
-        //     let spikeTile = map.getTileAtWorldXY(spike.x, spike.y, false, this.cameras.main, this.layer);
-        //     console.log(spikeTile);
-        //     if (spikeTile) {
-        //         console.log(spikeTile);
-        //         spike.rotation = spikeTile.properties.angleRotation;
-        //     }
-        //     spike.rotation = 0;
-        // });
-
         let spawn = map.findObject('Objects', obj => obj.name === 'Spawn');
 
         this.input.keyboard.on('keydown-P', () => {
@@ -72,7 +57,7 @@ class PlayGame extends Phaser.Scene {
             this.scene.launch('pauseMenu');
         });
 
-        this.player = new Player(this, spawn.x, spawn.y, Config.controls);
+        this.player = new Player(this, spawn.x, spawn.y - 16, Config.controls);
 
         this.physics.add.collider(this.player, groundLayer);
         const camera = this.cameras.main;
