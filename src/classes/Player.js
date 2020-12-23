@@ -3,28 +3,42 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, 'player', 0);
         scene.add.existing(this);
         scene.physics.world.enable(this);
-
-        this.IDLE = 14; // The frame of the idle player
-        this.JUMP = 9; // The frame when the player jumps
-
+        this.IDLE_FRAME = 14; // The frame of the idle player
+        this.JUMP_FRAME = 9; // The frame when the player jumps
+        this.MAX_NUM_JUMPS = 2;
         this.TILESIZE = 32; // Width of a tile in the map in pixels
+        this.GRAVITY = 512;
         this.XSPEED = Phaser.Math.GetSpeed(5 * this.TILESIZE, 1); // Horizontal speed in tiles per second
-        this.PEAKHEIGHT = 1.5; // Maximum height of a jump in tiles
-        this.PEAKDISTANCE = 3; // The horizontal distance travelled to reach the peak of the jump
-        this.PEAKTIME = this.XSPEED / this.JUMPHEIGHT; // Time to peak of jump in ms
-        // Inital vertical velocity
-        this.initialV = 2 * this.PEAKHEIGHT * this.XSPEED / this.PEAKDISTANCE;
-        this.gravity = (-2 * this.PEAKHEIGHT * this.XSPEED * this.XSPEED) / (this.PEAKDISTANCE * this.PEAKDISTANCE);
+
 
         scene.input.keyboard.addCapture(Object.values(controls));
         this.controls = scene.input.keyboard.addKeys(controls);
-        this.setCollideWorldBounds(true);
-        this.body.setSize(14, 32);
-        this.body.setOffset(-1, 0);
 
-        // this.setGravityY(this.gravity * this.TILESIZE);
-        this.setGravityY(100);
+        this.setCollideWorldBounds(true);
+        this.body.setSize(10, 32);
+
+        this.setGravityY(this.GRAVITY);
+        this.jumpVelocity = -200;
+
+        this.numJumps = this.MAX_NUM_JUMPS;
         this.jumping = false;
+
+        this.controls.jump.on('down', () => {
+            if (this.numJumps > 0) {
+                this.setVelocityY(this.jumpVelocity)
+                this.jumping = true;
+                this.anims.stop();
+                this.setFrame(this.JUMP_FRAME);
+            }
+        });
+
+        this.controls.jump.on('up', () => {
+            if (this.jumping) {
+                this.numJumps--;
+                this.body.velocity.y *= 0.5;
+                this.jumping = false;
+            }
+        });
     }
 
     update(time, delta) {
@@ -60,25 +74,15 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (this.body.velocity.x === 0) {
             this.anims.stop();
-            this.setFrame(this.IDLE);
+            this.setFrame(this.IDLE_FRAME);
         }
 
-        if (this.controls.jump.isDown /* && this.body.onFloor() */) {
-            this.jump(delta);
-        }
-    }
-
-    jump(delta) {
-        if (!this.jumping) {
-            this.jumping = true;
-            this.anims.stop();
-            this.setFrame(this.JUMP);
-            this.body.velocity.y = (-this.initialV * this.TILESIZE);
-            this.y += this.body.velocity.y * delta;
-        } else {
+        if (this.body.onFloor()) {
             this.jumping = false;
+            this.numJumps = this.MAX_NUM_JUMPS;
         }
     }
-}
 
+
+}
 export default Player;
