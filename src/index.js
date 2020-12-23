@@ -31,8 +31,8 @@ window.onload = function () {
         physics: {
             default: 'arcade',
             arcade: {
-                gravity: { y: 60 },
-                debug: true
+                // gravity: { y: 60 },
+                debug: Config.DEBUG
             }
         },
         banner: {

@@ -10,7 +10,7 @@ const Config = {
         restart: Phaser.Input.Keyboard.KeyCodes.R,
         pause: Phaser.Input.Keyboard.KeyCodes.P
     },
-    DEBUG: false //true
+    DEBUG: true
 };
 
 export default Config;
