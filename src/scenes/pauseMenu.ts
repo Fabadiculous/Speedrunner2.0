@@ -1,12 +1,12 @@
 class PauseMenu extends Phaser.Scene {
-    constructor () {
+    constructor() {
         super({
             key: 'pauseMenu',
-            plugins: [ 'InputPlugin' ]
+            plugins: ['InputPlugin']
         });
     }
 
-    create () {
+    create() {
         this.input.keyboard.on('keydown-P', () => {
             this.unpause();
         });
@@ -18,15 +18,15 @@ class PauseMenu extends Phaser.Scene {
         };
 
         let menuGraphic = this.add.graphics();
-        menuGraphic.WIDTH = 300;
-        menuGraphic.HEIGHT = 200;
+        const MENU_WIDTH = 300;
+        const MENU_HEIGHT = 200;
         menuGraphic.setX(this.cameras.main.centerX);
         menuGraphic.setY(this.cameras.main.centerY);
         menuGraphic.fillStyle(0x3c00af, 1);
-        menuGraphic.fillRoundedRect(-menuGraphic.WIDTH / 2, -menuGraphic.HEIGHT / 2,
-            menuGraphic.WIDTH, menuGraphic.HEIGHT);
-        
-        
+        menuGraphic.fillRoundedRect(-MENU_WIDTH / 2, -MENU_HEIGHT / 2,
+            MENU_WIDTH, MENU_HEIGHT);
+
+
         let resume = this.add.text(menuGraphic.x, menuGraphic.y, 'Resume', menuTextStyle);
         resume.setInteractive();
         resume.setOrigin(0.5);
@@ -38,20 +38,20 @@ class PauseMenu extends Phaser.Scene {
         returnToMenu.on('pointerdown', () => this.returnToMenu());
     }
 
-    update () {
+    update() {
 
     }
 
-    unpause () {
+    unpause() {
         this.scene.resume('playGame');
         this.scene.stop();
     }
 
-    returnToMenu () {
+    returnToMenu() {
         this.scene.stop('playGame');
-        this.scene.launch('menuUI', { title: 'SPEEDRUNNER', backBtn: false });
+        this.scene.wake('menuUI');
         this.scene.start('menu');
-        
+
     }
 }
 

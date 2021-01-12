@@ -10,7 +10,7 @@ class Preload extends Phaser.Scene {
 
         let progress = this.add.graphics();
 
-        this.load.on('progress', (value) => {
+        this.load.on('progress', (value: number) => {
             progress.clear();
             progress.fillStyle(0xff0000, 1);
             progress.fillRect(0, 270, 800 * value, 60);
@@ -62,7 +62,6 @@ class Preload extends Phaser.Scene {
         this.scene.launch('background');
         this.scene.launch('createAnims');
         this.scene.launch('loadLevels');
-        this.scene.launch('menuUI', { title: 'SPEEDRUNNER', backBtn: false });
         this.scene.start('menu');
     }
 

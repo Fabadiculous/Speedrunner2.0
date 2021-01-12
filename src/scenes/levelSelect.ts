@@ -1,4 +1,9 @@
+import { UIScene } from './menuUI';
+import { ILevel } from '../classes/Level';
+
 class LevelSelect extends Phaser.Scene {
+    helpText: Phaser.GameObjects.Text;
+
     constructor() {
         super({
             key: 'levelSelect',
@@ -7,25 +12,25 @@ class LevelSelect extends Phaser.Scene {
     }
 
     init() {
-        let menuUI = this.scene.get('menuUI');
+        let menuUI = this.scene.get('menuUI') as UIScene;
         menuUI.setTitle('LEVEL SELECT');
-        menuUI.addBackBtn(this);
+        menuUI.showButton();
+        menuUI.setScene(this);
     }
 
     create() {
-        this.helpTxtStyle = {
+        let helpTxtStyle = {
             font: '16px Arial',
             color: '#000000',
             align: 'center'
         };
 
-        this.helpTxt = this.add.text(
+        this.helpText = this.add.text(
             this.registry.get('width') / 2,
             this.registry.get('height') - 100,
             'Hover for level information',
-            this.helpTxtStyle
-        );
-        this.helpTxt.setOrigin(0.5);
+            helpTxtStyle
+        ).setOrigin(0.5);
 
         this.generatelevelGrid();
     }
@@ -45,12 +50,12 @@ class LevelSelect extends Phaser.Scene {
 
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
-                let lvlNum = i * columns + j;
-
+                let lvlNum: number = i * columns + j;
+                levels[lvlNum].num = lvlNum;
                 let currentThumbnail = this.createThumbnail(
                     sideMargin + j * (thumbnailDim + spacing) + thumbnailDim / 2,
                     topMargin + i * (thumbnailDim + spacing) + thumbnailDim / 2,
-                    lvlNum + 1,
+                    `${lvlNum + 1}`,
                     levels[lvlNum]
                 );
 
@@ -63,7 +68,7 @@ class LevelSelect extends Phaser.Scene {
         }
     }
 
-    createThumbnail(x, y, text, level) {
+    createThumbnail(x: number, y: number, text: string, level: ILevel) {
         let thumbnail = this.add.sprite(x, y, 'lvlThumbnail');
         thumbnail.setFrame(0);
 
@@ -86,15 +91,16 @@ class LevelSelect extends Phaser.Scene {
         return thumbnail;
     }
 
-    playGame(level) {
+    playGame(level: ILevel) {
         if (!level.locked) {
             this.scene.start('playGame', level);
-            this.scene.stop('menuUI');
+            // this.scene.stop('menuUI');
+            this.scene.sleep('menuUI');
         }
     }
 
-    displayLvlInfo(level) {
-        this.helpTxt.setText(`
+    displayLvlInfo(level: ILevel) {
+        this.helpText.setText(`
             Level: ${level.key}
             Star Time: ${level.starTime}
             Dev Time (No Stars): ${level.devNoStar}
@@ -105,7 +111,7 @@ class LevelSelect extends Phaser.Scene {
     }
 
     clearLvlInfo() {
-        this.helpTxt.setText('Hover for level information');
+        this.helpText.setText('Hover for level information');
     }
 }
 

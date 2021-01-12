@@ -17,7 +17,7 @@ class CreateAnims extends Phaser.Scene {
 
         let coinConfig = {
             key: 'spin',
-            frames: this.anims.generateFrameNumbers('coin'),
+            frames: this.anims.generateFrameNumbers('coin', {}),
             frameRate: 20,
             yoyo: true,
             repeat: -1
@@ -25,14 +25,14 @@ class CreateAnims extends Phaser.Scene {
 
         let platformConfig = {
             key: 'hover',
-            frames: this.anims.generateFrameNumbers('movingPlatform'),
+            frames: this.anims.generateFrameNumbers('movingPlatform', {}),
             frameRate: 20,
             repeat: -1
         };
 
         let flyConfig = {
             key: 'fly',
-            frames: this.anims.generateFrameNumbers('flyEnemy'),
+            frames: this.anims.generateFrameNumbers('flyEnemy', {}),
             frameRate: 20,
             yoyo: true,
             repeat: -1
@@ -40,7 +40,7 @@ class CreateAnims extends Phaser.Scene {
 
         let snakeConfig = {
             key: 'move',
-            frames: this.anims.generateFrameNumbers('snake'),
+            frames: this.anims.generateFrameNumbers('snake', {}),
             frameRate: 2,
             repeat: -1
         };

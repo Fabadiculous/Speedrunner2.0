@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "allowJs": true,
+        "target": "es5",
+        // "strict": true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "strictPropertyInitialization": false,
+        "moduleResolution": "node",
+        "module": "es6" // Avoid CommonJS so webpack can treeshake
+    },
+    "typeRoots": [
+        "node_modules/@types",
+        "node_modules/phaser/types"
+    ],
+    "types": [
+        "phaser"
+    ],
+    "include": ["./src/**/*"]
+}

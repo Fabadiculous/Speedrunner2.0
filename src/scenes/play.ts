@@ -1,20 +1,27 @@
-import Player from '../classes/Player';
+import { Player, IPlayer } from '../classes/Player';
 import Config from '../config';
+import { UIScene } from './menuUI';
+import { ILevel } from '../classes/Level';
 
 class PlayGame extends Phaser.Scene {
+    level: ILevel;
+    player: IPlayer;
+
     constructor() {
         super({
             key: 'playGame'
         });
     }
 
-    init(data) {
-        let menuUI = this.scene.get('menuUI');
+    init(data: any) {
+        let menuUI = this.scene.get('menuUI') as UIScene;
         menuUI.setTitle('');
-        menuUI.removeBackBtn();
-        this.level = data;
-        if (this.level > 10) {
-            this.level = 0;
+        menuUI.hideTitle();
+        menuUI.hideButton();
+        menuUI.setScene(this);
+        this.level = data as ILevel;
+        if (this.level.num > 10) {
+            this.level.num = 0;
         }
     }
 
@@ -66,7 +73,7 @@ class PlayGame extends Phaser.Scene {
 
     }
 
-    update(time, delta) {
+    update(time: any, delta: any) {
         this.player.update(time, delta);
     }
 }

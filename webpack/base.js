@@ -9,6 +9,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 /* eslint-disable no-undef */
 
 module.exports = {
+    entry: "./src/index.ts",
     mode: "development",
     devtool: "eval-source-map",
     devServer: {
@@ -18,12 +19,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
             },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     use: {
+            //         loader: "babel-loader"
+            //     }
+            // },
             {
                 test: /\.(gif|png|jpe?g|svg|xml)$/i,
                 use: "file-loader"
@@ -36,6 +42,10 @@ module.exports = {
             }
 
         ]
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+        symlinks: false // suggested by webpack to improve build speed if symlinks not in use
     },
     plugins: [
         new webpack.DefinePlugin({

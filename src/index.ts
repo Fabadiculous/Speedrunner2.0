@@ -8,16 +8,15 @@ import Help from './scenes/help';
 import CreateAnims from './scenes/animations';
 import LoadLevels from './scenes/loadLevel';
 import LevelSelect from './scenes/levelSelect';
-import MenuUI from './scenes/menuUI';
+import { MenuUI } from './scenes/menuUI';
 import Options from './scenes/options';
 import Config from './config';
 import PauseMenu from './scenes/pauseMenu';
 
 window.onload = function () {
-    const config = {
+    const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        backgroundColor: '#87CEEB',
-        pixelArt: true,
+        backgroundColor: "#87CEEB",
         scene: [Preload, Menu, PlayGame, Background, Help, CreateAnims, LoadLevels,
             LevelSelect, MenuUI, Options, PauseMenu],
         scale: {

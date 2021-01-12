@@ -1,6 +1,8 @@
 import Config from '../config';
 
 class Background extends Phaser.Scene {
+    clouds: Phaser.GameObjects.TileSprite | undefined;
+
     constructor() {
         super({
             key: 'background',
@@ -18,7 +20,8 @@ class Background extends Phaser.Scene {
     }
 
     update() {
-        this.clouds.tilePositionX += 0.2;
+        // Since create runs before update, clouds will always be defined.
+        this.clouds!.tilePositionX += 0.2;
     }
 }
 

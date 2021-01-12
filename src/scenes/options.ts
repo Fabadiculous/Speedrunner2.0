@@ -1,4 +1,5 @@
 import Config from '../config';
+import { UIScene } from './menuUI';
 
 class Options extends Phaser.Scene {
     constructor() {
@@ -9,9 +10,10 @@ class Options extends Phaser.Scene {
     }
 
     init() {
-        let menuUI = this.scene.get('menuUI');
+        let menuUI = this.scene.get('menuUI') as UIScene;
         menuUI.setTitle('OPTIONS');
-        menuUI.addBackBtn(this);
+        menuUI.showButton();
+        menuUI.setScene(this);
     }
 
     create() {
@@ -19,18 +21,17 @@ class Options extends Phaser.Scene {
     }
 
     displayControlsText() {
-        let controlTextStyle = {
+        let controlTextStyle: Phaser.Types.GameObjects.Text.TextStyle = {
             font: '32px Arial',
-            fill: '#000000',
+            color: '#000000',
             align: 'left'
         };
-        this.controlsText = this.add.text(
+        let controlsText: Phaser.GameObjects.Text = this.add.text(
             350,
             200,
             this.controlsString(),
             controlTextStyle
-        );
-        this.controlsText.setOrigin(0.5);
+        ).setOrigin(0.5);
     }
 
     controlsString() {
@@ -40,7 +41,7 @@ class Options extends Phaser.Scene {
         }
         return result;
     }
-    getKeyName(keyCode) {
+    getKeyName(keyCode: number) {
         return Object.entries(Phaser.Input.Keyboard.KeyCodes).find(x => x[1] === keyCode)[0];
     }
 }

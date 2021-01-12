@@ -1,3 +1,5 @@
+import { UIScene } from './menuUI';
+
 class Help extends Phaser.Scene {
     constructor() {
         super({
@@ -7,9 +9,10 @@ class Help extends Phaser.Scene {
     }
 
     init() {
-        let menuUI = this.scene.get('menuUI');
+        let menuUI = this.scene.get('menuUI') as UIScene;
         menuUI.setTitle('HELP');
-        menuUI.addBackBtn(this);
+        menuUI.showButton();
+        menuUI.setScene(this);
     }
 
     create() {

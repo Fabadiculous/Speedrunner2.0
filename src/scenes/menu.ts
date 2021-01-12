@@ -1,4 +1,5 @@
-import Button from '../classes/Button';
+import { Button } from '../classes/Button';
+import { UIScene } from './menuUI';
 
 class Menu extends Phaser.Scene {
     constructor() {
@@ -9,8 +10,15 @@ class Menu extends Phaser.Scene {
     }
 
     init() {
-        let menuUI = this.scene.get('menuUI');
-        menuUI.setTitle('SPEEDRUNNER');
+        if (!this.scene.isActive('menuUI')) {
+            this.scene.launch('menuUI', { title: 'SPEEDRUNNER', hasBackBtn: false, previousScene: this, currentScene: this });
+        } else {
+            let menuUI = this.scene.get('menuUI') as UIScene;
+            menuUI.setTitle('SPEEDRUNNER');
+            menuUI.hideButton();
+            menuUI.setScene(this);
+        }
+
     }
 
     create() {
@@ -20,30 +28,29 @@ class Menu extends Phaser.Scene {
             this.registry.get('height') / 2 - 100,
             this.nextScene,
             ['levelSelect'],
-            this
+            this, 'Play'
         );
-        play.addText('Play');
 
         let options = new Button(
             this.registry.get('width') / 2,
             this.registry.get('height') / 2,
             this.nextScene,
             ['options'],
-            this
+            this,
+            'Options'
         );
-        options.addText('Options');
 
         let help = new Button(
             this.registry.get('width') / 2,
             this.registry.get('height') / 2 + 100,
             this.nextScene,
             ['help'],
-            this
+            this,
+            'Help'
         );
-        help.addText('Help');
     }
 
-    nextScene(key) {
+    nextScene(key: string) {
         this.scene.start(key);
     }
 

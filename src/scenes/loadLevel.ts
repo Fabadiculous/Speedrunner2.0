@@ -1,6 +1,14 @@
-import Level from '../classes/Level';
+import { Level, ILevel } from '../classes/Level';
+
+type level = {
+    starTime: number;
+    devAllStarTime: number;
+    devAnyStarTime: number;
+}
 
 class LoadLevels extends Phaser.Scene {
+    private levels: ILevel[];
+
     constructor() {
         super({
             key: 'loadLevels',
@@ -16,7 +24,7 @@ class LoadLevels extends Phaser.Scene {
         let numLevels = map.size;
         let data = map.entries;
         let keys = Object.keys(data);
-        let defaultProps = {
+        let defaultProps: level = {
             starTime: 30,
             devAllStarTime: null,
             devAnyStarTime: null
@@ -42,7 +50,7 @@ class LoadLevels extends Phaser.Scene {
             }
             return 0;
         });
-
+        console.log(this.levels);
         // Take 'tutorial' from end of list and at to front
         // This assumes all keys are 'level[number]' except tutorial
         this.levels.unshift(this.levels.pop());
